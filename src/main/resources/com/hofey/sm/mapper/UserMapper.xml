@@ -6,7 +6,7 @@
 
 <mapper namespace="com.hofey.sm.mapper.UserMapper">
     <!--查询用户-->
-    <select id="selectUser" resultType="com.hofey.sm.entity.User">
+    <select id="selectUser" parameterType="java.lang.Integer" resultType="com.hofey.sm.entity.User">
         select *
         from t_user
         where id = #{id}
