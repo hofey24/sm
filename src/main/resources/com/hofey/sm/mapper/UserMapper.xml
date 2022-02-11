@@ -7,8 +7,8 @@
 <mapper namespace="com.hofey.sm.mapper.UserMapper">
     <!--查询用户-->
     <select id="selectUser" parameterType="java.lang.Integer" resultType="com.hofey.sm.entity.User">
-        select *
-        from t_user
-        where id = #{id}
+        select u.id, u.name, u.sex, u.mobile, u.create_time
+        from t_user u
+        where u.id = #{id}
     </select>
 </mapper>
