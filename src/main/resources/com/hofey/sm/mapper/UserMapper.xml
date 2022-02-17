@@ -11,4 +11,9 @@
         from t_user u
         where u.id = #{id}
     </select>
+
+    <!--添加一个用户信息-->
+    <insert id="insertUser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user (name,sex,mobile) values (#{name},#{sex},#{mobile})
+    </insert>
 </mapper>

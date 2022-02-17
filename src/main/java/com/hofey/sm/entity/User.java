@@ -15,7 +15,7 @@ import java.util.Date;
 public class User {
     private Integer id;
     private String name;
-    private String sex;
+    private Integer sex;
     private String mobile;
     private Date createTime;
 }
