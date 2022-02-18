@@ -28,8 +28,8 @@ class UserMapperTest {
     void insertUser(){
         UserMapper userMapper = this.sqlSession.getMapper(UserMapper.class);
         User user = new User();
-        user.setName("易小川");
-        user.setMobile("14572773833");
+        user.setName("蒙毅");
+        user.setMobile("15523452335");
         user.setSex(1);
 
         int result = userMapper.insertUser(user);

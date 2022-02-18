@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.hofey.sm.mapper.DeptMapper">
+
+
+    <!--即便字段名和属性名一致，也需要配置ResultMap 方便解耦-->
+    <resultMap id="deptResultMap" type="com.hofey.sm.entity.Dept">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+
+    <!--查询部门-->
+    <select id="selectDept" resultMap="deptResultMap">
+        select u.id, u.name
+        from t_dept u
+        where u.id = #{id}
+    </select>
+
+    <!--添加一个部门信息-->
+    <insert id="insertDept" useGeneratedKeys="true" keyProperty="id">
+        insert into t_dept (name)
+        values (#{name})
+    </insert>
+
+
+    <!--查询部门和员工信息  ong - many    start -->
+    <!--resultMap-->
+    <resultMap id="deptAndEmpResultMap" type="com.hofey.sm.entity.DeptAndEmpDTO">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="emps" ofType="com.hofey.sm.entity.Emp" columnPrefix="emp_"
+                    resultMap="com.hofey.sm.mapper.EmpMapper.empResultMap">
+        </collection>
+    </resultMap>
+    <!--select -->
+    <select id="selectDeptAndEmp" resultMap="deptAndEmpResultMap">
+        select td.id,
+               td.name,
+               te.id   emp_id,
+               te.name emp_name,
+               te.province emp_province,
+               te.city emp_city,
+               te.county emp_county,
+               te.mobile emp_mobile
+        from t_dept td
+                 left join t_emp te on td.id = te.dept_id
+        where td.id = #{id}
+    </select>
+    <!--查询部门和员工信息  ong - many    end -->
+
+
+</mapper>

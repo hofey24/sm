@@ -1,20 +1,18 @@
 package com.hofey.sm.entity;
 
-
 import lombok.Data;
 
-import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: hofey
- * @Date: 2022/2/8 17:37
+ * @Date: 2022/2/18 17:17
  * @Description:
  */
 @Data
-public class User {
+public class DeptAndEmpDTO {
     private Integer id;
     private String name;
-    private Integer sex;
-    private String mobile;
-    private Date createTime;
+
+    private List<Emp> emps;
 }

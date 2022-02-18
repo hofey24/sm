@@ -5,15 +5,30 @@
 
 
 <mapper namespace="com.hofey.sm.mapper.UserMapper">
+
+
+    <!--即便字段名和属性名一致，也需要配置userResultMap 方便解耦-->
+    <resultMap id="userResultMap" type="com.hofey.sm.entity.User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="mobile" column="mobile"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+
     <!--查询用户-->
-    <select id="selectUser" parameterType="java.lang.Integer" resultType="com.hofey.sm.entity.User">
+    <select id="selectUser" resultMap="userResultMap">
         select u.id, u.name, u.sex, u.mobile, u.create_time
         from t_user u
         where u.id = #{id}
     </select>
 
     <!--添加一个用户信息-->
-    <insert id="insertUser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
-        insert into t_user (name,sex,mobile) values (#{name},#{sex},#{mobile})
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user (name, sex, mobile)
+        values (#{name}, #{sex}, #{mobile})
     </insert>
+
+
 </mapper>
