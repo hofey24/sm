@@ -1,0 +1,21 @@
+
+server:
+  port: 8024
+
+
+spring:
+  application:
+    name: spring-boot-mybatis
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/dwy
+    username: root
+    password: root
+
+
+# mybatis 相关配置
+mybatis:
+  type-aliases-package: com.hofey.sm.entity
+  configuration:
+    default-fetch-size: 100
+    default-statement-timeout:  30

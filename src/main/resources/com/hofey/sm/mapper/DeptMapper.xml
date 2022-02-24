@@ -5,7 +5,7 @@
 
 
 <mapper namespace="com.hofey.sm.mapper.DeptMapper">
-
+    <cache/>
 
     <!--即便字段名和属性名一致，也需要配置ResultMap 方便解耦-->
     <resultMap id="deptResultMap" type="com.hofey.sm.entity.Dept">
@@ -41,12 +41,15 @@
     <select id="selectDeptAndEmp" resultMap="deptAndEmpResultMap">
         select td.id,
                td.name,
-               te.id   emp_id,
-               te.name emp_name,
+               te.id       emp_id,
+               te.name     emp_name,
                te.province emp_province,
-               te.city emp_city,
-               te.county emp_county,
-               te.mobile emp_mobile
+               te.city     emp_city,
+               te.county   emp_county,
+               te.mobile   emp_mobile,
+               te.address  emp_address,
+               te.birthday emp_birthday,
+               te.dept_id  emp_dept_id
         from t_dept td
                  left join t_emp te on td.id = te.dept_id
         where td.id = #{id}

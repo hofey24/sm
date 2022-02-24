@@ -29,8 +29,27 @@
     </resultMap>
 
 
-    <!--查询部门-->
+    <!--查询员工信息和所在部门信息-->
     <select id="selectEmpAndDept" resultMap="findEmpAndDept">
+        select te.id,
+               te.name,
+               te.birthday,
+               te.mobile,
+               te.province,
+               te.city,
+               te.county,
+               te.address,
+               te.email,
+               td.id   dept_id,
+               td.name dept_name
+        from t_emp te
+                 left join t_dept td on te.dept_id = td.id
+    </select>
+
+
+    <!--动态sql语句查询-->
+    <!--查询符合提交的员工信息-->
+    <select id="queryEmpByDynamicParam" resultMap="findEmpAndDept">
         select te.id,
                te.name,
                te.birthday,

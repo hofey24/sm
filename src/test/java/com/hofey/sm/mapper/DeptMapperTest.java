@@ -48,9 +48,9 @@ class DeptMapperTest {
     void selectDeptAndEmps() {
         DeptMapper deptMapper = this.sqlSession.getMapper(DeptMapper.class);
         final List<DeptAndEmpDTO> empAndDeptDtos = deptMapper.selectDeptAndEmp(2);
-        System.out.println(empAndDeptDtos.size());
         System.out.println(empAndDeptDtos.toString());
-
+        List<DeptAndEmpDTO> empAndDeptDto1 =  deptMapper.selectDeptAndEmp(2);
+        System.out.println(empAndDeptDto1.toString());
     }
 
 

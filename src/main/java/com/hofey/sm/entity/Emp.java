@@ -2,6 +2,7 @@ package com.hofey.sm.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  * @Description:
  */
 @Data
-public class Emp {
+public class Emp implements Serializable {
     private Integer id;
     private String name;
     private String mobile;
